@@ -3,6 +3,10 @@
 module Casing
     ( toCamelCase
     , toPascalCase
+    , toSnakeCase
+    , toScreamingSnakeCase
+    , toKebabCase
+    , toTitleCase
     ) where
 
 import Data.Char as Char
@@ -64,3 +68,19 @@ toCamelCase =
 toPascalCase :: String -> String
 toPascalCase =
     intercalate "" . map makePascalCase . getWords
+
+toSnakeCase :: String -> String
+toSnakeCase =
+    intercalate "_" . map (map Char.toLower) . getWords
+
+toScreamingSnakeCase :: String -> String
+toScreamingSnakeCase =
+    intercalate "_" . map (map Char.toUpper) . getWords
+
+toKebabCase :: String -> String
+toKebabCase =
+    intercalate "-" . map (map Char.toLower) . getWords
+
+toTitleCase :: String -> String
+toTitleCase =
+    intercalate " " . map makePascalCase . getWords
