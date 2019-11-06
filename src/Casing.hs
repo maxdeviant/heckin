@@ -7,6 +7,7 @@ module Casing
 
 import Data.Char as Char
 import Data.List (intercalate)
+import Data.Maybe (catMaybes)
 
 isBoundary :: Char -> Char -> Bool
 isBoundary _currentChar '_' = True
@@ -32,9 +33,13 @@ getWords' currentWord acc (currentChar : nextChar : remainingChars) =
     in
         getWords' currentWord' acc' remainingChars'
 
+stringToMaybe :: String -> Maybe String
+stringToMaybe [] = Nothing
+stringToMaybe value = Just value
+
 getWords :: String -> [String]
 getWords value =
-    reverse $ getWords' "" [] value
+    reverse $ catMaybes $ map stringToMaybe $ getWords' "" [] value
 
 mapHead :: (a -> a) -> [a] -> [a]
 mapHead _mapping [] = []
