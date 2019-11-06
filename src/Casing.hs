@@ -1,11 +1,8 @@
 {-# OPTIONS -Wall #-} 
 
-module Lib
-    ( someFunc
-    , toCamelCase
+module Casing
+    ( toCamelCase
     , toPascalCase
-    , getWords
-    , getWords'
     ) where
 
 import Data.Char as Char
@@ -62,6 +59,3 @@ toCamelCase =
 toPascalCase :: String -> String
 toPascalCase =
     intercalate "" . map makePascalCase . getWords
-
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
