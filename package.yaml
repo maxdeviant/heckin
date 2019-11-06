@@ -35,3 +35,4 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - Heckin
+    - hspec
