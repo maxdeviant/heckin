@@ -13,8 +13,14 @@ import Data.Char as Char
 import Data.List (intercalate)
 import Data.Maybe (catMaybes)
 
+isSeparator' :: Char -> Bool
+isSeparator' '_' = True
+isSeparator' '-' = True
+isSeparator' ' ' = True
+isSeparator' _ = False
+
 isBoundary :: Char -> Char -> Bool
-isBoundary _currentChar '_' = True
+isBoundary _currentChar nextChar | isSeparator' nextChar = True
 isBoundary currentChar nextChar =
     Char.isLower currentChar && Char.isUpper nextChar
 
@@ -23,16 +29,22 @@ getWords' currentWord acc [] = currentWord : acc
 getWords' currentWord acc (singleChar : []) = (currentWord ++ [singleChar]) : acc
 getWords' currentWord acc (currentChar : nextChar : remainingChars) =
     let
+        appendCurrentChar word =
+            if isSeparator' currentChar then
+                word
+            else
+                word ++ [currentChar]
+
         (currentWord', acc') =
             if isBoundary currentChar nextChar then
-                ("", (currentWord ++ [currentChar]) : acc)
+                ("", appendCurrentChar currentWord : acc)
             else if all Char.isUpper currentWord && Char.isUpper currentChar && Char.isLower nextChar then
-                ([currentChar], currentWord : acc)
+                (appendCurrentChar "", currentWord : acc)
             else
-                (currentWord ++ [currentChar], acc)
+                (appendCurrentChar currentWord, acc)
 
         remainingChars' =
-            if nextChar /= '_' then nextChar : remainingChars
+            if not $ isSeparator' nextChar then nextChar : remainingChars
             else remainingChars
     in
         getWords' currentWord' acc' remainingChars'
@@ -53,21 +65,17 @@ mapTail :: (a -> a) -> [a] -> [a]
 mapTail _mapping [] = []
 mapTail mapping (x:xs) = x : map mapping xs
 
-makePascalCase :: String -> String
-makePascalCase =
+capitalize :: String -> String
+capitalize =
     mapHead Char.toUpper . mapTail Char.toLower
-
-makeCamelCase :: String -> String
-makeCamelCase =
-    map Char.toLower
 
 toCamelCase :: String -> String
 toCamelCase =
-    intercalate "" . mapTail makePascalCase . mapHead makeCamelCase . getWords
+    intercalate "" . mapTail capitalize . mapHead (map Char.toLower) . getWords
 
 toPascalCase :: String -> String
 toPascalCase =
-    intercalate "" . map makePascalCase . getWords
+    intercalate "" . map capitalize . getWords
 
 toSnakeCase :: String -> String
 toSnakeCase =
@@ -83,4 +91,4 @@ toKebabCase =
 
 toTitleCase :: String -> String
 toTitleCase =
-    intercalate " " . map makePascalCase . getWords
+    intercalate " " . map capitalize . getWords
