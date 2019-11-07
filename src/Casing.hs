@@ -9,19 +9,19 @@ module Casing
   , toTitleCase
   ) where
 
-import Data.Char as Char
+import qualified Data.Char as Char
 import Data.List (intercalate)
 import Data.Maybe (catMaybes)
 
-isSeparator' :: Char -> Bool
-isSeparator' '_' = True
-isSeparator' '-' = True
-isSeparator' ' ' = True
-isSeparator' _ = False
+isSeparator :: Char -> Bool
+isSeparator '_' = True
+isSeparator '-' = True
+isSeparator ' ' = True
+isSeparator _ = False
 
 isBoundary :: Char -> Char -> Bool
 isBoundary _currentChar nextChar
-  | isSeparator' nextChar = True
+  | isSeparator nextChar = True
 isBoundary currentChar nextChar =
   Char.isLower currentChar && Char.isUpper nextChar
 
@@ -30,7 +30,7 @@ getWords' currentWord acc [] = currentWord : acc
 getWords' currentWord acc (singleChar:[]) = (currentWord ++ [singleChar]) : acc
 getWords' currentWord acc (currentChar:nextChar:remainingChars) =
   let appendCurrentChar word =
-        if isSeparator' currentChar
+        if isSeparator currentChar
           then word
           else word ++ [currentChar]
       (currentWord', acc') =
@@ -41,7 +41,7 @@ getWords' currentWord acc (currentChar:nextChar:remainingChars) =
                  then (appendCurrentChar "", currentWord : acc)
                  else (appendCurrentChar currentWord, acc)
       remainingChars' =
-        if not $ isSeparator' nextChar
+        if not $ isSeparator nextChar
           then nextChar : remainingChars
           else remainingChars
    in getWords' currentWord' acc' remainingChars'
