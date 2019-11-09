@@ -64,21 +64,44 @@ mapTail mapping (x:xs) = x : map mapping xs
 capitalize :: String -> String
 capitalize = mapHead Char.toUpper . mapTail Char.toLower
 
+-- | Converts the given string to camelCase.
+--
+-- In camelCase each word starts with an uppercase letter except for the first
+-- word, which starts with a lowercase letter.
 toCamelCase :: String -> String
 toCamelCase =
   intercalate "" . mapTail capitalize . mapHead (map Char.toLower) . getWords
 
+-- | Converts the given string to PascalCase.
+--
+-- In PascalCase the first letter of each word is uppercase.
 toPascalCase :: String -> String
 toPascalCase = intercalate "" . map capitalize . getWords
 
+-- | Converts the given string to snake_case.
+--
+-- In snake_case all letters are lowercase and each word is separated by an
+-- underscore ("_").
 toSnakeCase :: String -> String
 toSnakeCase = intercalate "_" . map (map Char.toLower) . getWords
 
+-- | Converts the given string to SCREAMING_SNAKE_CASE.
+--
+-- In SCREAMING_SNAKE_CASE all letters are uppercase and each word is separated
+-- by an underscore ("_").
 toScreamingSnakeCase :: String -> String
 toScreamingSnakeCase = intercalate "_" . map (map Char.toUpper) . getWords
 
+-- | Converts the given string to kebab-case.
+--
+-- In kebab-case all letters are lowercase and each word is separated by a
+-- hyphen ("-").
 toKebabCase :: String -> String
 toKebabCase = intercalate "-" . map (map Char.toLower) . getWords
 
+-- | Converts the given string to Title Case.
+--
+-- In Title Case the first letter of each word is uppercase and each word is
+-- separated by a space (" ").
 toTitleCase :: String -> String
 toTitleCase = intercalate " " . map capitalize . getWords
