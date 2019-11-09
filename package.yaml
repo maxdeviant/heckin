@@ -1,4 +1,4 @@
-name:                Heckin
+name:                heckin
 version:             0.0.1.0
 github:              "maxdeviant/heckin"
 license:             MIT
@@ -26,7 +26,7 @@ library:
   source-dirs: src
 
 tests:
-  Heckin-test:
+  heckin-test:
     main:                Spec.hs
     source-dirs:         test
     ghc-options:
@@ -34,5 +34,5 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - Heckin
+    - heckin
     - hspec
