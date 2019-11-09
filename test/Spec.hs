@@ -20,6 +20,8 @@ main =
       test "PlayerID" "playerId"
       test "IODevice" "ioDevice"
       test "NASA" "nasa"
+      test "Two  Spaces" "twoSpaces"
+      test "Three   Spaces" "threeSpaces"
       test "Two__Underscores" "twoUnderscores"
       test "Three___Underscores" "threeUnderscores"
       test
@@ -37,6 +39,8 @@ main =
       test "PlayerID" "PlayerId"
       test "IODevice" "IoDevice"
       test "NASA" "Nasa"
+      test "Two  Spaces" "TwoSpaces"
+      test "Three   Spaces" "ThreeSpaces"
       test "Two__Underscores" "TwoUnderscores"
       test "Three___Underscores" "ThreeUnderscores"
       test
@@ -54,6 +58,8 @@ main =
       test "PlayerID" "player_id"
       test "IODevice" "io_device"
       test "NASA" "nasa"
+      test "Two  Spaces" "two_spaces"
+      test "Three   Spaces" "three_spaces"
       test "Two__Underscores" "two_underscores"
       test "Three___Underscores" "three_underscores"
       test
@@ -71,6 +77,8 @@ main =
       test "PlayerID" "PLAYER_ID"
       test "IODevice" "IO_DEVICE"
       test "NASA" "NASA"
+      test "Two  Spaces" "TWO_SPACES"
+      test "Three   Spaces" "THREE_SPACES"
       test "Two__Underscores" "TWO_UNDERSCORES"
       test "Three___Underscores" "THREE_UNDERSCORES"
       test
@@ -88,6 +96,8 @@ main =
       test "PlayerID" "player-id"
       test "IODevice" "io-device"
       test "NASA" "nasa"
+      test "Two  Spaces" "two-spaces"
+      test "Three   Spaces" "three-spaces"
       test "Two__Underscores" "two-underscores"
       test "Three___Underscores" "three-underscores"
       test
@@ -105,6 +115,8 @@ main =
       test "PlayerID" "Player Id"
       test "IODevice" "Io Device"
       test "NASA" "Nasa"
+      test "Two  Spaces" "Two Spaces"
+      test "Three   Spaces" "Three Spaces"
       test "Two__Underscores" "Two Underscores"
       test "Three___Underscores" "Three Underscores"
       test
