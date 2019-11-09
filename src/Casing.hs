@@ -1,5 +1,15 @@
 {-# OPTIONS -Wall #-}
 
+-- |
+-- Module: Casing
+-- Copyright: (c) Marshall Bowers 2019
+-- License: MIT
+-- Maintainer: elliott.codes@gmail.com
+-- Portability: portable
+--
+-- = Description
+--
+-- Contains case conversion functions.
 module Casing
   ( toCamelCase
   , toPascalCase

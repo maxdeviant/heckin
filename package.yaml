@@ -1,6 +1,6 @@
 name:                Heckin
-version:             0.1.0.0
-github:              "maxdeviant/Heckin"
+version:             0.0.1.0
+github:              "maxdeviant/heckin"
 license:             MIT
 author:              "Marshall Bowers"
 maintainer:          "elliott.codes@gmail.com"
@@ -11,13 +11,13 @@ extra-source-files:
 - CHANGELOG.md
 
 # Metadata used when publishing your package
-# synopsis:            Short description of your package
-# category:            Web
+synopsis:            Oh heck, it's a heckin' case conversion library.
+category:            Data, Text
 
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/maxdeviant/Heckin#readme>
+description:         Please see the README on GitHub at <https://github.com/maxdeviant/heckin#readme>
 
 dependencies:
 - base >= 4.7 && < 5
