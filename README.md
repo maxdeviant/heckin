@@ -1,6 +1,6 @@
 # heckin
 
-![Hackage](https://img.shields.io/hackage/v/heckin)
+[![Hackage](https://img.shields.io/hackage/v/heckin)](https://hackage.haskell.org/package/heckin)
 
 Oh heck, it's a heckin' case conversion library for Haskell.
 
